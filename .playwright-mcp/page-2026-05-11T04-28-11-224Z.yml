@@ -1,0 +1,178 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: /.*/
+      - generic [ref=e5]:
+        - heading "RegexLab" [level=1] [ref=e6]
+        - paragraph [ref=e7]: Build, test, and debug regular expressions in real time
+    - generic [ref=e8]:
+      - combobox "Regex flavor" [ref=e9] [cursor=pointer]:
+        - option "JavaScript" [selected]
+      - button "Copy regex" [ref=e10] [cursor=pointer]:
+        - img [ref=e11]
+      - button "Toggle theme" [ref=e14] [cursor=pointer]:
+        - img [ref=e15]
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]: Regular Expression
+      - generic [ref=e20]:
+        - generic [ref=e21]: /
+        - textbox "enter pattern…" [ref=e22]: (\w+)\s(\w+)
+        - generic [ref=e23]: /
+        - textbox "flags" [ref=e24]: g
+      - generic [ref=e25]:
+        - generic [ref=e26] [cursor=pointer]:
+          - checkbox "g global" [checked] [ref=e27]
+          - generic [ref=e28]: g
+          - emphasis [ref=e29]: global
+        - generic [ref=e30] [cursor=pointer]:
+          - checkbox "i ignore case" [ref=e31]
+          - generic [ref=e32]: i
+          - emphasis [ref=e33]: ignore case
+        - generic [ref=e34] [cursor=pointer]:
+          - checkbox "m multiline" [ref=e35]
+          - generic [ref=e36]: m
+          - emphasis [ref=e37]: multiline
+        - generic [ref=e38] [cursor=pointer]:
+          - checkbox "s dotall" [ref=e39]
+          - generic [ref=e40]: s
+          - emphasis [ref=e41]: dotall
+        - generic [ref=e42] [cursor=pointer]:
+          - checkbox "u unicode" [ref=e43]
+          - generic [ref=e44]: u
+          - emphasis [ref=e45]: unicode
+        - generic [ref=e46] [cursor=pointer]:
+          - checkbox "y sticky" [ref=e47]
+          - generic [ref=e48]: "y"
+          - emphasis [ref=e49]: sticky
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - text: Test String
+        - generic [ref=e52]: 8 matches
+      - generic [ref=e53]:
+        - generic:
+          - mark: Hello World
+          - mark: Foo Bar
+          - mark: The quick
+          - mark: brown fox
+          - mark: jumps over
+          - mark: the lazy
+          - text: "dog. Contact: alice@example.com, bob_smith@test."
+          - mark: org Phone
+          - text: "numbers: 555-123-"
+          - mark: 4567 and
+          - text: 555.987.6543
+        - textbox "Type or paste text here…" [ref=e54]: "Hello World Foo Bar The quick brown fox jumps over the lazy dog. Contact: alice@example.com, bob_smith@test.org Phone numbers: 555-123-4567 and 555.987.6543"
+    - generic [ref=e55]:
+      - generic [ref=e56]: Substitution
+      - textbox "Replacement string (use $1, $2…)" [ref=e57]
+      - generic [ref=e58]: Result
+      - generic [ref=e59]: "dog. Contact: alice@example.com, bob_smith@test. numbers: 555-123- 555.987.6543"
+    - complementary [ref=e60]:
+      - generic [ref=e61]:
+        - button "Matches" [ref=e62] [cursor=pointer]
+        - button "Explanation" [ref=e63] [cursor=pointer]
+        - button "Cheatsheet" [ref=e64] [cursor=pointer]
+      - generic [ref=e66]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - generic [ref=e69]: Match 1
+            - generic [ref=e70]: 0–11
+          - generic [ref=e71]: Hello World
+          - generic [ref=e72]:
+            - generic [ref=e73]:
+              - generic [ref=e74]: $1
+              - generic [ref=e75]: Hello
+            - generic [ref=e76]:
+              - generic [ref=e77]: $2
+              - generic [ref=e78]: World
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]: Match 2
+            - generic [ref=e82]: 12–19
+          - generic [ref=e83]: Foo Bar
+          - generic [ref=e84]:
+            - generic [ref=e85]:
+              - generic [ref=e86]: $1
+              - generic [ref=e87]: Foo
+            - generic [ref=e88]:
+              - generic [ref=e89]: $2
+              - generic [ref=e90]: Bar
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - generic [ref=e93]: Match 3
+            - generic [ref=e94]: 20–29
+          - generic [ref=e95]: The quick
+          - generic [ref=e96]:
+            - generic [ref=e97]:
+              - generic [ref=e98]: $1
+              - generic [ref=e99]: The
+            - generic [ref=e100]:
+              - generic [ref=e101]: $2
+              - generic [ref=e102]: quick
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - generic [ref=e105]: Match 4
+            - generic [ref=e106]: 30–39
+          - generic [ref=e107]: brown fox
+          - generic [ref=e108]:
+            - generic [ref=e109]:
+              - generic [ref=e110]: $1
+              - generic [ref=e111]: brown
+            - generic [ref=e112]:
+              - generic [ref=e113]: $2
+              - generic [ref=e114]: fox
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - generic [ref=e117]: Match 5
+            - generic [ref=e118]: 40–50
+          - generic [ref=e119]: jumps over
+          - generic [ref=e120]:
+            - generic [ref=e121]:
+              - generic [ref=e122]: $1
+              - generic [ref=e123]: jumps
+            - generic [ref=e124]:
+              - generic [ref=e125]: $2
+              - generic [ref=e126]: over
+        - generic [ref=e127]:
+          - generic [ref=e128]:
+            - generic [ref=e129]: Match 6
+            - generic [ref=e130]: 51–59
+          - generic [ref=e131]: the lazy
+          - generic [ref=e132]:
+            - generic [ref=e133]:
+              - generic [ref=e134]: $1
+              - generic [ref=e135]: the
+            - generic [ref=e136]:
+              - generic [ref=e137]: $2
+              - generic [ref=e138]: lazy
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - generic [ref=e141]: Match 7
+            - generic [ref=e142]: 108–117
+          - generic [ref=e143]: org Phone
+          - generic [ref=e144]:
+            - generic [ref=e145]:
+              - generic [ref=e146]: $1
+              - generic [ref=e147]: org
+            - generic [ref=e148]:
+              - generic [ref=e149]: $2
+              - generic [ref=e150]: Phone
+        - generic [ref=e151]:
+          - generic [ref=e152]:
+            - generic [ref=e153]: Match 8
+            - generic [ref=e154]: 135–143
+          - generic [ref=e155]: 4567 and
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - generic [ref=e158]: $1
+              - generic [ref=e159]: "4567"
+            - generic [ref=e160]:
+              - generic [ref=e161]: $2
+              - generic [ref=e162]: and
+  - contentinfo [ref=e163]:
+    - generic [ref=e164]: RegexLab · client-side only · uses JavaScript RegExp engine
+    - generic [ref=e165]:
+      - text: Powered by
+      - link "Tertiary Infotech Academy Pte. Ltd" [ref=e166] [cursor=pointer]:
+        - /url: https://www.tertiarycourses.com.sg/
