@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RegexLab — Modern Regex Tester</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">/.*/</div>
+      <div>
+        <h1>RegexLab</h1>
+        <p class="subtitle">Build, test, and debug regular expressions in real time</p>
+      </div>
+    </div>
+    <div class="actions">
+      <select id="flavor" title="Regex flavor">
+        <option value="js">JavaScript</option>
+      </select>
+      <button id="copyBtn" class="icon-btn" title="Copy regex">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+      <button id="themeBtn" class="icon-btn" title="Toggle theme">
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel regex-panel">
+      <div class="panel-title">Regular Expression</div>
+      <div class="regex-input-wrap">
+        <span class="delim">/</span>
+        <input id="pattern" type="text" spellcheck="false" placeholder="enter pattern…" value="(\w+)\s(\w+)" />
+        <span class="delim">/</span>
+        <input id="flags" type="text" spellcheck="false" maxlength="8" placeholder="flags" value="g" />
+      </div>
+      <div class="flag-toggles">
+        <label><input type="checkbox" data-flag="g" checked /> <span>g</span><em>global</em></label>
+        <label><input type="checkbox" data-flag="i" /> <span>i</span><em>ignore case</em></label>
+        <label><input type="checkbox" data-flag="m" /> <span>m</span><em>multiline</em></label>
+        <label><input type="checkbox" data-flag="s" /> <span>s</span><em>dotall</em></label>
+        <label><input type="checkbox" data-flag="u" /> <span>u</span><em>unicode</em></label>
+        <label><input type="checkbox" data-flag="y" /> <span>y</span><em>sticky</em></label>
+      </div>
+      <div id="errorBox" class="error-box" hidden></div>
+    </section>
+
+    <section class="panel test-panel">
+      <div class="panel-title">
+        Test String
+        <span class="match-count" id="matchCount">0 matches</span>
+      </div>
+      <div class="editor">
+        <div id="highlight" class="highlight"></div>
+        <textarea id="testString" spellcheck="false" placeholder="Type or paste text here…">Hello World
+Foo Bar
+The quick brown fox jumps over the lazy dog.
+Contact: alice@example.com, bob_smith@test.org
+Phone numbers: 555-123-4567 and 555.987.6543</textarea>
+      </div>
+    </section>
+
+    <section class="panel sub-panel">
+      <div class="panel-title">Substitution</div>
+      <input id="replacement" type="text" spellcheck="false" placeholder="Replacement string (use $1, $2…)" />
+      <div class="sub-result-label">Result</div>
+      <pre id="subResult" class="sub-result"></pre>
+    </section>
+
+    <aside class="panel info-panel">
+      <div class="tabs">
+        <button class="tab active" data-tab="matches">Matches</button>
+        <button class="tab" data-tab="explain">Explanation</button>
+        <button class="tab" data-tab="cheat">Cheatsheet</button>
+      </div>
+
+      <div class="tab-content active" id="tab-matches">
+        <div id="matchesList" class="matches-list"></div>
+      </div>
+
+      <div class="tab-content" id="tab-explain">
+        <div id="explanation" class="explanation"></div>
+      </div>
+
+      <div class="tab-content" id="tab-cheat">
+        <div class="cheat">
+          <h4>Character Classes</h4>
+          <div class="cheat-row"><code>\d</code><span>digit (0-9)</span></div>
+          <div class="cheat-row"><code>\D</code><span>not a digit</span></div>
+          <div class="cheat-row"><code>\w</code><span>word char</span></div>
+          <div class="cheat-row"><code>\W</code><span>not word char</span></div>
+          <div class="cheat-row"><code>\s</code><span>whitespace</span></div>
+          <div class="cheat-row"><code>\S</code><span>not whitespace</span></div>
+          <div class="cheat-row"><code>.</code><span>any char</span></div>
+          <div class="cheat-row"><code>[abc]</code><span>set</span></div>
+          <div class="cheat-row"><code>[^abc]</code><span>negated set</span></div>
+
+          <h4>Anchors</h4>
+          <div class="cheat-row"><code>^</code><span>start of line</span></div>
+          <div class="cheat-row"><code>$</code><span>end of line</span></div>
+          <div class="cheat-row"><code>\b</code><span>word boundary</span></div>
+          <div class="cheat-row"><code>\B</code><span>not word boundary</span></div>
+
+          <h4>Quantifiers</h4>
+          <div class="cheat-row"><code>*</code><span>0 or more</span></div>
+          <div class="cheat-row"><code>+</code><span>1 or more</span></div>
+          <div class="cheat-row"><code>?</code><span>0 or 1</span></div>
+          <div class="cheat-row"><code>{n}</code><span>exactly n</span></div>
+          <div class="cheat-row"><code>{n,m}</code><span>n to m</span></div>
+          <div class="cheat-row"><code>*?</code><span>lazy</span></div>
+
+          <h4>Groups</h4>
+          <div class="cheat-row"><code>(abc)</code><span>capturing</span></div>
+          <div class="cheat-row"><code>(?:abc)</code><span>non-capturing</span></div>
+          <div class="cheat-row"><code>(?&lt;n&gt;abc)</code><span>named</span></div>
+          <div class="cheat-row"><code>a|b</code><span>alternation</span></div>
+          <div class="cheat-row"><code>(?=abc)</code><span>lookahead</span></div>
+          <div class="cheat-row"><code>(?!abc)</code><span>neg lookahead</span></div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <span>RegexLab · client-side only · uses JavaScript RegExp engine</span>
+    <div>Powered by <a href="https://www.tertiarycourses.com.sg/" target="_blank" rel="noopener noreferrer">Tertiary Infotech Academy Pte. Ltd</a></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
